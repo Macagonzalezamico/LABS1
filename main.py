@@ -4,7 +4,6 @@ from fastapi import FastAPI
 
 import pandas as pd
 
-"""
 # Cargar los archivos CSV
 df1 = pd.read_csv('Dataset\movies_dataset.csv')
 df2 = pd.read_csv('Dataset\credits.csv')
@@ -23,8 +22,8 @@ print("Nulos en la columna 'budget':", budget_null_count)
 
 # Transformaciones de los datos.
 #Valores nulos rellenados por 0.
-df['revenue'] = df['revenue'].fillna(0) #Recaudación de la pelicula, en dolares
-df['budget'] = df['budget'].fillna(0) #El presupuesto de la película, en dólares
+df['revenue'] = df['revenue'].fillna(0) 
+df['budget'] = df['budget'].fillna(0) 
 
 revenue_null_count = df['revenue'].isnull().sum()
 budget_null_count = df['budget'].isnull().sum()
@@ -41,7 +40,7 @@ release_date_null_count = df['release_date'].isnull().sum()
 print("Nulos en la columna 'release_date':",release_date_null_count)
 
 #convierte la columna "release_date" en objetos de fecha y hora
-df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce') #Fecha de estreno de la película
+df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
 
 #Formato de fecha y creo columna release_year.
 df['release_year'] = df['release_date'].dt.year
@@ -163,8 +162,9 @@ for index, row in df.iterrows():
 
 # Crear una nueva columna con los nombres del elenco
 df['crew'] = pd.Series(crew_names)
-"""
 
+
+Proyecto1 = 'Proyecto1.csv'
 df = pd.read_csv('Proyecto1.csv')
 
 from fastapi import FastAPI
@@ -282,9 +282,10 @@ def get_actor(nombre_actor):
 
 get_actor('')
 
+
 @app.get('/get_director')
 def get_director(nombre_director):
-    director_films = df[df['crew'].apply(lambda x: nombre_director.lower() in [director.lower() for director in x] if isinstance(x, list) else False)]
+    director_films = df[df['crew'].apply(lambda x: nombre_director in x if isinstance(x, list) else False)]
     total_films = len(director_films)
 
     if total_films == 0:
@@ -301,7 +302,6 @@ def get_director(nombre_director):
 
     return {
         "director": nombre_director,
-        "peliculas": films_info
-    }
+        "peliculas": films_info}
 
 get_director('')
