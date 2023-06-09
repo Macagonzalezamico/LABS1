@@ -242,11 +242,12 @@ def cantidad_filmaciones_dia(dia):
 cantidad_filmaciones_dia('')
 
 @app.get('/score_titulo')
-def score_titulo(titulo_de_la_filmacion):
+def score_titulo(titulo_de_la_filmacion: str):
     for index, row in df.iterrows():
         if row['title'] == titulo_de_la_filmacion:
             titulo = row['title']
-            año_estreno = row['release_date'].year
+            fecha_estreno = pd.to_datetime(row['release_date'])
+            año_estreno = fecha_estreno.year
             score = row['popularity']
             return f"La película {titulo} fue estrenada en el año {año_estreno} con un score/popularidad de {score}."
     
