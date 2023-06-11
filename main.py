@@ -323,6 +323,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 
+# Ejemplo de uso
+df = pd.read_csv('Proyecto1.csv')  # Cargar los datos de las películas desde un archivo CSV
+
 @app.get('/recomendacion')
 def recomendacion(titulo):
     # Convertir el título buscado y los títulos en el DataFrame a minúsculas
@@ -348,9 +351,6 @@ def recomendacion(titulo):
     peliculas_recomendadas = df.iloc[indices_similares[1:6]]['title'].values.tolist()
     
     return peliculas_recomendadas
-
-# Ejemplo de uso
-df = pd.read_csv('Proyecto1.csv')  # Cargar los datos de las películas desde un archivo CSV
 
 titulo_busqueda = ''
 recomendaciones = recomendacion(titulo_busqueda)
