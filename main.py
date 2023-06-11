@@ -315,3 +315,45 @@ def get_director(nombre_director):
         "peliculas": films_info}
 
 get_director('')
+
+
+#SISTEMA DE RECOMENDACION:
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+
+@app.get('/recomendacion')
+def recomendacion(titulo):
+    # Convertir el título buscado y los títulos en el DataFrame a minúsculas
+    titulo = titulo.lower()
+    df['title_lower'] = df['title'].str.lower()
+    
+    # Obtener el índice de la película buscada
+    indice_pelicula = df[df['title_lower'] == titulo].index
+    if len(indice_pelicula) == 0:
+        return "No se encontró información para la película especificada."
+    
+    # Obtener los vectores TF-IDF de las sinopsis de las películas
+    vectorizer = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = vectorizer.fit_transform(df['overview'].fillna(''))
+    
+    # Calcular la similitud de coseno entre la película buscada y las demás películas
+    similarities = cosine_similarity(tfidf_matrix[indice_pelicula], tfidf_matrix).flatten()
+    
+    # Ordenar las películas según el score de similaridad en orden descendente
+    indices_similares = similarities.argsort()[::-1]
+    
+    # Obtener los títulos de las películas recomendadas
+    peliculas_recomendadas = df.iloc[indices_similares[1:6]]['title'].values.tolist()
+    
+    return peliculas_recomendadas
+
+# Ejemplo de uso
+df = pd.read_csv('Proyecto1.csv')  # Cargar los datos de las películas desde un archivo CSV
+
+titulo_busqueda = 'toy story'
+recomendaciones = recomendacion(titulo_busqueda)
+print(f"Películas recomendadas para '{titulo_busqueda}':")
+for pelicula in recomendaciones:
+    print(pelicula)
