@@ -295,7 +295,7 @@ get_actor('')
 
 @app.get('/get_director')
 def get_director(nombre_director):
-    director_films = df[df['crew'].apply(lambda x: nombre_director in x if isinstance(x, list) else False)]
+    director_films = df[df['crew'].apply(lambda x: nombre_director.lower() in [director.lower() for director in x] if isinstance(x, list) else False)]
     total_films = len(director_films)
 
     if total_films == 0:
