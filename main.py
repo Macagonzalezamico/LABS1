@@ -352,7 +352,7 @@ def recomendacion(titulo):
 # Ejemplo de uso
 df = pd.read_csv('Proyecto1.csv')  # Cargar los datos de las películas desde un archivo CSV
 
-titulo_busqueda = 'toy story'
+titulo_busqueda = ''
 recomendaciones = recomendacion(titulo_busqueda)
 print(f"Películas recomendadas para '{titulo_busqueda}':")
 for pelicula in recomendaciones:
