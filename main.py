@@ -252,7 +252,7 @@ cantidad_filmaciones_dia('')
 @app.get('/score_titulo')
 def score_titulo(titulo_de_la_filmacion: str):
     for index, row in df.iterrows():
-        if row['title'] == titulo_de_la_filmacion:
+        if row['title'].lower() == titulo_de_la_filmacion.lower():
             titulo = row['title']
             fecha_estreno = pd.to_datetime(row['release_date'])
             año_estreno = fecha_estreno.year
@@ -266,7 +266,7 @@ score_titulo('')
 @app.get('/votos_titulo')
 def votos_titulo(titulo_de_la_filmacion):
     for index, row in df.iterrows():
-        if row['title'] == titulo_de_la_filmacion:
+        if row['title'].lower() == titulo_de_la_filmacion.lower():
             titulo = row['title']
             votos = row['vote_count']
             promedio = row['vote_average']
