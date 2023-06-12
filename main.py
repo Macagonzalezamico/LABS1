@@ -1,9 +1,14 @@
-Proyecto1 = 'Proyecto1.csv'
+import pandas as pd
+from fastapi import FastAPI
+
 df = pd.read_csv('Proyecto1.csv')
 
 # Convertir la columna 'cast' en una cadena separada por un delimitador específico 
 df['cast'] = df['cast'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
 df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
+
+Proyecto1 = 'Proyecto1.csv'
+df = pd.read_csv('Proyecto1.csv')
 
 
 # Utilizar un formato de archivo diferente que admita la representación de estructuras de datos complejas, como JSON.
