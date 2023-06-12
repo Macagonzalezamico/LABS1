@@ -1,8 +1,10 @@
-    						![1686531329752](image/README/1686531329752.png)
+<p align="center">
+  <img src="image/README/1686531329752.png">
+</p>
 
-    PROYECTO INDIVIDUAL Nº1
+<h1 align="center">PROYECTO INDIVIDUAL Nº1</h1>
 
-    Machine Learning Operations (MLOps)
+<h2 align="center">MACHINE LEARNING OPERATIONS (MLOps)</h2>
 
 ## **Descripción del problema (Contexto y rol a desarrollar)**
 
@@ -34,15 +36,20 @@ Este proyecto tiene como objetivo realizar transformaciones en los datos, desarr
 Se utilizará el framework FastAPI para desarrollar una API con los siguientes endpoints:
 
 1. `cantidad_filmaciones_mes(Mes)`: Devuelve la cantidad de películas estrenadas en el mes consultado en todo el dataset.
-   Ejemplo de retorno: "X cantidad de películas fueron estrenadas en el mes de X".
+   > Ejemplo de retorno: "X cantidad de películas fueron estrenadas en el mes de X".
+   >
 2. `cantidad_filmaciones_dia(Dia)`: Devuelve la cantidad de películas estrenadas en el día consultado en todo el dataset.
-   Ejemplo de retorno: "X cantidad de películas fueron estrenadas en los días X".
+   > Ejemplo de retorno: "X cantidad de películas fueron estrenadas en los días X".
+   >
 3. `score_titulo(titulo_de_la_filmación)`: Ingresando el Titulo de una filmacion devuelve el título, año de estreno y score/popularidad de una película.
-   Ejemplo de retorno: "La película X fue estrenada en el año X con un score/popularidad de X".
+   > Ejemplo de retorno: "La película X fue estrenada en el año X con un score/popularidad de X".
+   >
 4. `votos_titulo(titulo_de_la_filmación)`: Ingresando el Titulo de una filmacion devuelve el título, cantidad de votos y valor promedio de votaciones de una película. Se requiere que la película tenga al menos 2000 valoraciones; de lo contrario, se mostrará un mensaje indicando que no cumple con esta condición.
-   Ejemplo de retorno: "La película X fue estrenada en el año X. La misma cuenta con un total de X valoraciones, con un promedio de X".
+   > Ejemplo de retorno: "La película X fue estrenada en el año X. La misma cuenta con un total de X valoraciones, con un promedio de X".
+   >
 5. `get_actor(nombre_actor)`: Ingresando el nombre del Actor devuelve el éxito del mismo medido a través del retorno, la cantidad de películas en las que ha participado y el promedio de retorno. No se considerarán los directores.
-   Ejemplo de retorno: "El actor X ha participado de X cantidad de filmaciones. Ha conseguido un retorno de X con un promedio de X por filmación".
+   > Ejemplo de retorno: "El actor X ha participado de X cantidad de filmaciones. Ha conseguido un retorno de X con un promedio de X por filmación".
+   >
 6. `get_director(nombre_director)`: Ingresando el nombre del Director devuelve el éxito del mismo medido a través del retorno, así como el nombre, fecha de lanzamiento, retorno individual, costo y ganancia de cada película dirigida por el mismo.
 
 ## Deployment
