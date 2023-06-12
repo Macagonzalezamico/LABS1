@@ -176,6 +176,8 @@ df['crew'] = pd.Series(crew_names)
 Proyecto1 = 'Proyecto1.csv'
 df.to_csv('Proyecto1.csv', index=False)
 """
+import pandas as pd
+from fastapi import FastAPI
 
 df = pd.read_csv('Proyecto1.csv')
 
@@ -295,12 +297,21 @@ votos_titulo('')
 
 @app.get('/get_actor')
 def get_actor(nombre_actor):
-    actor_films = df[df['cast'].apply(lambda x: nombre_actor.lower() in [actor.lower() for actor in x] if isinstance(x, list) else False)]
-    total_films = len(actor_films)
-    total_return = actor_films['return'].sum()
-    average_return = total_return / total_films if total_films > 0 else 0
+    total_filmaciones = 0
+    total_retorno = 0.0
 
-    return f"El actor {nombre_actor} ha participado en {total_films} filmaciones. Ha conseguido un retorno de {total_return} con un promedio de {average_return} por filmación."
+    for index, row in df.iterrows():
+        cast = row['cast']
+        retorno = row['return_value']
+        titulo = row['title']
+
+        if isinstance(cast, str) and nombre_actor in cast and 'Director' not in row['crew']:
+            total_filmaciones += 1
+            total_retorno += retorno
+
+    promedio_retorno = total_retorno / total_filmaciones if total_filmaciones > 0 else 0.0
+
+    return f"El actor {nombre_actor} ha participado en {total_filmaciones} filmaciones. Ha conseguido un retorno total de {total_retorno} con un promedio de {promedio_retorno} por filmación."
 
 get_actor('')
 
