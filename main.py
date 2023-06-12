@@ -1,5 +1,5 @@
 ##ETL
-
+"""
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI
@@ -177,6 +177,7 @@ df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else
 #Creo un csv nuevo y limpio para utilizar.
 Proyecto1 = 'Proyecto1.csv'
 df.to_csv('Proyecto1.csv', index=False)
+"""
 
 df = pd.read_csv('Proyecto1.csv')
 
