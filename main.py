@@ -166,7 +166,7 @@ for index, row in df.iterrows():
 
 # Crear una nueva columna con los nombres del elenco
 df['crew'] = pd.Series(crew_names)
-
+"""
 
 ##FUNCIONES API
 
@@ -177,7 +177,7 @@ df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else
 #Creo un csv nuevo y limpio para utilizar.
 Proyecto1 = 'Proyecto1.csv'
 df.to_csv('Proyecto1.csv', index=False)
-"""
+
 
 df = pd.read_csv('Proyecto1.csv')
 
