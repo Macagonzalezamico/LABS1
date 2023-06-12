@@ -167,23 +167,22 @@ for index, row in df.iterrows():
 # Crear una nueva columna con los nombres del elenco
 df['crew'] = pd.Series(crew_names)
 
+# Convertir la columna 'cast' en una cadena separada por un delimitador específico 
+df['cast'] = df['cast'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
+df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '') 
+
 
 ##FUNCIONES API
-
-
 
 #Creo un csv nuevo y limpio para utilizar.
 Proyecto1 = 'Proyecto1.csv'
 df.to_csv('Proyecto1.csv', index=False)
 """
+
 import pandas as pd
 from fastapi import FastAPI
 
 df = pd.read_csv('Proyecto1.csv')
-
-# Convertir la columna 'cast' en una cadena separada por un delimitador específico 
-df['cast'] = df['cast'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
-df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '') 
 
 
 # Utilizar un formato de archivo diferente que admita la representación de estructuras de datos complejas, como JSON.
@@ -303,7 +302,6 @@ def get_actor(nombre_actor):
     average_return = total_return / total_films if total_films > 0 else 0
 
     return f"El actor {nombre_actor} ha participado en {total_films} filmaciones. Ha conseguido un retorno de {total_return} con un promedio de {average_return} por filmación."
-
 get_actor('')
 
 
