@@ -1,11 +1,11 @@
 ##ETL
-"""
+
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI
 
 import pandas as pd
-
+"""
 # Cargar los archivos CSV
 df1 = pd.read_csv('Dataset\movies_dataset.csv')
 df2 = pd.read_csv('Dataset\credits.csv')

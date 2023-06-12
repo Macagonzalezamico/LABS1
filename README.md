@@ -10,7 +10,7 @@
 
 En el transcurso de este proyecto haremos un recorrido por cada una de las temáticas esenciales. Vamos a crear mi primer modelo de ML que soluciona un problema de negocio: un sistema de recomendación que aún no ha sido puesto en marcha!
 
-Vamos a empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** ( *Minimum Viable Product* ).
+Vamos a empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** ( *Minimum Viable Product* ). Vamos a utiliza los archivos credits.csv y movies_dataset.csv .
 
 Links del proyecto:
 
