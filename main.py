@@ -170,9 +170,7 @@ df['crew'] = pd.Series(crew_names)
 
 ##FUNCIONES API
 
-# Convertir la columna 'cast' en una cadena separada por un delimitador específico 
-df['cast'] = df['cast'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
-df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
+
 
 #Creo un csv nuevo y limpio para utilizar.
 Proyecto1 = 'Proyecto1.csv'
@@ -180,6 +178,11 @@ df.to_csv('Proyecto1.csv', index=False)
 """
 
 df = pd.read_csv('Proyecto1.csv')
+
+# Convertir la columna 'cast' en una cadena separada por un delimitador específico 
+df['cast'] = df['cast'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '')
+df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else '') 
+
 
 # Utilizar un formato de archivo diferente que admita la representación de estructuras de datos complejas, como JSON.
 df['cast'] = df['cast'].apply(lambda x: x.split(', ') if isinstance(x, str) else [])
