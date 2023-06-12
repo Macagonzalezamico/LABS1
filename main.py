@@ -166,7 +166,7 @@ for index, row in df.iterrows():
 
 # Crear una nueva columna con los nombres del elenco
 df['crew'] = pd.Series(crew_names)
-"""
+
 
 ##FUNCIONES API
 
@@ -177,7 +177,7 @@ df['crew'] = df['crew'].apply(lambda x: ', '.join(x) if isinstance(x, list) else
 #Creo un csv nuevo y limpio para utilizar.
 Proyecto1 = 'Proyecto1.csv'
 df.to_csv('Proyecto1.csv', index=False)
-
+"""
 
 df = pd.read_csv('Proyecto1.csv')
 
@@ -307,9 +307,6 @@ def get_director(nombre_director):
     director_films = df[df['crew'].apply(lambda x: nombre_director.lower() in [director.lower() for director in x] if isinstance(x, list) else False)]
     total_films = len(director_films)
 
-    if total_films == 0:
-        return f"No se encontró al director {nombre_director} en ninguna filmación"
-
     films_info = []
     for index, row in director_films.iterrows():
         title = row['title']
@@ -319,6 +316,9 @@ def get_director(nombre_director):
         ganancia = row['revenue']
         films_info.append({"title": title, "release_date": release_date, "return": retorno, "budget": costo, "revenue": ganancia})
 
+    if total_films == 0:
+        return f"No se encontró al director {nombre_director} en ninguna filmación"
+    
     return {
         "director": nombre_director,
         "peliculas": films_info}
