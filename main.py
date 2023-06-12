@@ -316,6 +316,106 @@ def get_director(nombre_director):
 
 get_director('')
 
+#ESTADISTICAS DESCRIPTIVAS:
+
+import pandas as pd
+
+# Calcular medidas estadísticas descriptivas
+descripcion = df.describe()
+
+# Imprimir el resumen estadístico
+df.describe()
+
+#Información del dataframa
+df.info()
+
+df.head(2)
+
+#VALORES FALTANTES:
+# Verificar si hay valores faltantes en el DataFrame
+df.isnull()
+
+# Contar la cantidad de valores faltantes por columna
+df.isnull().sum()
+
+#VISUALIZACION DE DATOS:
+
+#GRAFICO DE BARRAS: CANTIDAD DE FILMACIONES POR MES:
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Supongamos que tienes un DataFrame llamado 'df' que contiene las columnas 'title' y 'release_date'
+
+# Convertir la columna 'release_date' al formato de fecha
+df['release_date'] = pd.to_datetime(df['release_date'], format='%Y-%m-%d')
+
+# Crear una nueva columna 'month' que contenga solo el mes de la fecha
+df['month'] = df['release_date'].dt.month
+
+# Contar la cantidad de filmaciones por mes
+filmaciones_por_mes = df['month'].value_counts().sort_index()
+
+# Obtener los nombres de los meses en lugar de los números de mes
+nombres_meses = pd.to_datetime(filmaciones_por_mes.index, format='%m').strftime('%B')
+
+# Crear el gráfico de barras
+plt.bar(nombres_meses, filmaciones_por_mes, color='red')
+
+# Personalizar el gráfico
+plt.xlabel('Meses')
+plt.ylabel('Cantidad de Filmaciones')
+plt.title('Cantidad de Filmaciones de Películas por Mes')
+
+# Rotar los nombres de los meses en el eje x si es necesario
+plt.xticks(rotation=45)
+
+# Mostrar el gráfico
+plt.show()
+
+#GRAFICO ANALISIS TEMPORAL CANTIDAD DE PELICULAS VISTAS POR MES:
+import random
+import matplotlib.pyplot as plt
+
+x = ['Enero', 'Feb', 'Mar', 'Abril', 'May', 'Jun', 'Jul', 'Agost', 'Sept', ' Oct', ' Nov', ' Dic']
+y = [random.randint(0, 20) for _ in range(12)]
+
+plt.xticks(rotation=45)
+plt.plot(x, y, color='red')
+plt.xlabel('Fechas')
+plt.ylabel('Cantidad de películas vistas')
+plt.title('Análisis Temporal de la cantidad de películas vistas por mes')
+plt.show()
+
+#GRAFICO DE DISPERSIÓN (Scatter plot):
+import matplotlib.pyplot as plt
+
+# Crear un gráfico de dispersión para dos columnas
+plt.scatter(df['budget'], df['popularity'], color= 'Blue')
+plt.xlabel('budget')
+plt.ylabel('popularuty')
+plt.title('Gráfico de Dispersión')
+plt.show()
+
+
+
+#NUBE DE PALABRAS:
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+# Obtener una lista de todos los títulos de las películas
+titulos = df['title'].tolist()  # Reemplaza 'df' con el nombre de tu DataFrame y 'titulo' con el nombre de la columna de títulos
+
+# Unir todos los títulos en un solo string
+text = ' '.join(titulos)
+
+# Crear el objeto de WordCloud
+wordcloud = WordCloud(width=800, height=400, max_words=100, background_color='white').generate(text)
+
+# Mostrar la nube de palabras
+plt.figure(figsize=(10, 6))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.show()
 
 #SISTEMA DE RECOMENDACION:
 
