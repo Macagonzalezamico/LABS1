@@ -296,17 +296,20 @@ votos_titulo('')
 
 @app.get('/get_actor')
 def get_actor(nombre_actor):
+    df['cast'] = df['cast'].apply(lambda x: x.split(', ') if isinstance(x, str) else x)
     actor_films = df[df['cast'].apply(lambda x: nombre_actor.lower() in [actor.lower() for actor in x] if isinstance(x, list) else False)]
     total_films = len(actor_films)
     total_return = actor_films['return'].sum()
     average_return = total_return / total_films if total_films > 0 else 0
 
     return f"El actor {nombre_actor} ha participado en {total_films} filmaciones. Ha conseguido un retorno de {total_return} con un promedio de {average_return} por filmación."
+
 get_actor('')
 
 
 @app.get('/get_director')
 def get_director(nombre_director):
+    df['crew'] = df['crew'].apply(lambda x: x.split(', ') if isinstance(x, str) else x)
     director_films = df[df['crew'].apply(lambda x: nombre_director.lower() in [director.lower() for director in x] if isinstance(x, list) else False)]
     total_films = len(director_films)
 
