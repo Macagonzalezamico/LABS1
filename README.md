@@ -10,17 +10,17 @@
 
 En el transcurso de este proyecto haremos un recorrido por cada una de las temáticas esenciales. Vamos a crear mi primer modelo de ML que soluciona un problema de negocio: un sistema de recomendación que aún no ha sido puesto en marcha!
 
-Vamos a empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** ( *Minimum Viable Product* ). Vamos a utiliza los archivos credits.csv y movies_dataset.csv .
+Vamos a empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** ( *Minimum Viable Product* ). 
 
 Links del proyecto:
 
 GITHUB: https://github.com/Macagonzalezamico/LABS1
 
-RENDER:
+RENDER: https://proyecto1-cy3j.onrender.com/docs#/
 
 # Propuesta de Trabajo
 
-Este proyecto tiene como objetivo realizar transformaciones en los datos, desarrollar una API utilizando el framework FastAPI, realizar análisis exploratorio de los datos y construir un sistema de recomendación de películas. A continuación se detallan los pasos y requerimientos necesarios.
+Este proyecto tiene como objetivo realizar transformaciones en los datos, desarrollar una API utilizando el framework FastAPI, realizar análisis exploratorio de los datos y construir un sistema de recomendación de películas. Vamos a utiliza los archivos `credits.csv y movies_dataset.csv` . A continuación se detallan los pasos y requerimientos necesarios.
 
 ## Transformaciones
 
